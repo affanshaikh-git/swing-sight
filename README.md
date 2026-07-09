@@ -25,6 +25,15 @@ python pose_extract.py session.mp4
 
 # 3. Analyze
 python stroke_analyzer.py session_pose.csv --hand right
+
+# 4. Sub-frame impact timing from the audio track (refines stroke timestamps,
+#    finds the 3-tap sync event for IMU alignment)
+python audio_impacts.py session.mp4 --strokes session_pose_strokes.csv
+
+# 5. Movement heatmap on the court (one-time: grab a frame, note 4 corner pixels)
+python court_heatmap.py --grab-frame session.mp4
+python court_heatmap.py session_pose.csv --video-size 1920 1080 \
+    --preset near-half-singles --pixels "x1,y1 x2,y2 x3,y3 x4,y4"
 ```
 
 Outputs:
@@ -53,6 +62,8 @@ The labeled CSVs feed a learned classifier (gradient boosting / 1D-CNN) that rep
 
 - [x] Pose extraction + stroke segmentation + rule-based classification
 - [x] Per-stroke biomechanics metrics + coaching heuristics
+- [x] Audio impact detection (sub-frame timing + 3-tap sync anchor)
+- [x] Court movement heatmap via homography (works from any camera angle)
 - [ ] Apple Watch IMU sync (toss-arm timing on serve, tempo, stroke count)
 - [ ] DIY racket sensor — XIAO ESP32-S3 + ICM-20948 at the butt cap (~$25, <15g)
 - [ ] Fused stroke taxonomy: {FH, BH} × {topspin, slice, flat} + serve/smash/volley — camera classifies the wing, racket IMU classifies the spin
