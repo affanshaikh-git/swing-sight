@@ -75,13 +75,19 @@ Firmware: sample at 500–1000Hz into ring buffer, detect impact (accel spike > 
 
 ---
 
-## Build Order
+## Build Order (revised Jul 2026 — serve-first, audio-first)
 
-1. **This week:** Film one session (side-on, 60fps), run the prototype on it → baseline metrics
-2. **Week 2–3:** Label strokes from session 1 output, tune segmentation thresholds
-3. **Week 3–4:** Add Watch logging (SensorLog), sync, add tempo metrics
-4. **Month 2:** Build racket sensor, integrate impact data
-5. **Month 3:** Train learned classifier, prototype real-time audio cues
+1. **This week:** Film one session (side-on, 60fps), run the prototype → baseline metrics
+2. **Week 2–3:** Label strokes, tune segmentation thresholds on real footage
+3. **Week 3–5:** **Serve Coach v0** — real-time loop: live pose → serve-phase detection → one audio cue per session focus (toss timing / knee bend / contact height). Prototype on laptop + webcam first, then on-device
+4. **Month 2:** Watch IMU for toss-arm timing (feeds serve cues); groundstroke cues
+5. **Month 3:** Learned classifier from labeled sessions; racket sensor as personal side-build
+
+### Cueing principles (motor learning)
+- One focus per session — never multi-metric audio
+- Cue only when outside threshold; silence means good
+- Positive confirmation sparingly ("better") — constant feedback aids the session but hurts retention
+- Post-session report remains the full data view; the ear gets the minimum
 
 ## Stroke Taxonomy (fused target)
 

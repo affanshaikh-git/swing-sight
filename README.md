@@ -58,19 +58,22 @@ python stroke_analyzer.py session_pose.csv --hand right --label
 
 The labeled CSVs feed a learned classifier (gradient boosting / 1D-CNN) that replaces the rule-based one after ~10 sessions.
 
-## Roadmap
+## Roadmap (serve-first, audio-first)
+
+**Strategic pivot (Jul 2026):** real-time audio coaching ("coach in your ear") is the product thesis — near-zero time delay is the Value Equation lever nothing on the market touches. The serve is the wedge: stationary player, solo-compatible, easiest real-time case.
 
 - [x] Pose extraction + stroke segmentation + rule-based classification
 - [x] Per-stroke biomechanics metrics + coaching heuristics
 - [x] Audio impact detection (sub-frame timing + 3-tap sync anchor)
 - [x] Court movement heatmap via homography (works from any camera angle)
-- [ ] Apple Watch IMU sync (toss-arm timing on serve, tempo, stroke count)
-- [ ] DIY racket sensor — XIAO ESP32-S3 + ICM-20948 at the butt cap (~$25, <15g)
-- [ ] Fused stroke taxonomy: {FH, BH} × {topspin, slice, flat} + serve/smash/volley — camera classifies the wing, racket IMU classifies the spin
-- [ ] Composite per-stroke-type score for session-over-session trends
+- [ ] **Serve Coach v0** — real-time serve cues: on-device pose at 30fps+, one focus per session, cue only outside threshold, silence = good (motor-learning-informed cueing)
+- [ ] Apple Watch IMU (toss-arm timing — feeds serve cues directly)
+- [ ] Groundstroke audio cues (contact point, coil)
 - [ ] Learned stroke classifier from labeled sessions
+- [ ] Composite per-stroke-type score for session-over-session trends
+- [ ] DIY racket sensor — XIAO ESP32-S3 + ICM-20948 (~$25, <15g) — deprioritized: personal tool, not product path
+- [ ] Fused taxonomy ({FH, BH} × {topspin, slice, flat}) — needs racket IMU
 - [ ] TrackNet-style ball tracking (speed, depth, placement)
-- [ ] Real-time audio cues on court
 
 ## Notes
 
