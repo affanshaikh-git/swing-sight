@@ -10,7 +10,9 @@ Apple Watch IMU ─────▶ swing tempo      ──▶ classification    
 DIY racket sensor ───▶ impact detection ──▶                    ──▶ coaching notes
 ```
 
-Phase 1 (this repo, working today) is the vision pipeline. Phases 2–4 add Apple Watch IMU, a DIY ESP32 racket sensor, and real-time audio feedback — see [docs/PLAN.md](docs/PLAN.md).
+Phase 1 (this repo, working today) is the vision pipeline. Phases 2–4 add Apple Watch IMU, a DIY ESP32 racket sensor, and real-time audio feedback.
+
+**Docs:** [Full plan](docs/PLAN.md) · [Capture protocol](docs/CAPTURE.md) · [Racket sensor build](docs/HARDWARE.md)
 
 ## Quick start
 
