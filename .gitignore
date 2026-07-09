@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+*.task
+*_pose.csv
+*_strokes.csv
+*_report.md
+*.mp4
+*.mov
+.DS_Store
