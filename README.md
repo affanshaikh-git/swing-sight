@@ -53,9 +53,12 @@ The labeled CSVs feed a learned classifier (gradient boosting / 1D-CNN) that rep
 
 - [x] Pose extraction + stroke segmentation + rule-based classification
 - [x] Per-stroke biomechanics metrics + coaching heuristics
-- [ ] Apple Watch IMU sync (tempo, stroke count without camera)
+- [ ] Apple Watch IMU sync (toss-arm timing on serve, tempo, stroke count)
 - [ ] DIY racket sensor — XIAO ESP32-S3 + ICM-20948 at the butt cap (~$25, <15g)
+- [ ] Fused stroke taxonomy: {FH, BH} × {topspin, slice, flat} + serve/smash/volley — camera classifies the wing, racket IMU classifies the spin
+- [ ] Composite per-stroke-type score for session-over-session trends
 - [ ] Learned stroke classifier from labeled sessions
+- [ ] TrackNet-style ball tracking (speed, depth, placement)
 - [ ] Real-time audio cues on court
 
 ## Notes

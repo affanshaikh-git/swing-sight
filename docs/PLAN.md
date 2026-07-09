@@ -83,6 +83,21 @@ Firmware: sample at 500–1000Hz into ring buffer, detect impact (accel spike > 
 4. **Month 2:** Build racket sensor, integrate impact data
 5. **Month 3:** Train learned classifier, prototype real-time audio cues
 
+## Stroke Taxonomy (fused target)
+
+Camera and racket IMU classify **complementary dimensions** — this is swingsight's core advantage over single-sensor products:
+
+| Dimension | Best sensor | Why |
+|---|---|---|
+| Forehand vs backhand | Camera | Body geometry is unambiguous in pose; IMU signature is weak |
+| Topspin vs slice vs flat | Racket IMU | Swing path (low-to-high vs high-to-low) + racket face angle from gyro; invisible to pose estimation |
+| Serve / smash | Either | Overhead orientation + wrist above head |
+| Volley | Fusion | Compact punch, tiny backswing, low swing speed — context + IMU |
+
+Fused output matrix: {forehand, backhand} × {topspin, slice, flat} + {serve, smash, volley}.
+
+**Known limitation (v1):** stroke segmentation keys on wrist-speed prominence tuned for full swings — volleys are compact, low-speed motions that will slip under the threshold. Acceptable while training groundstrokes + serve; revisit before analyzing net play.
+
 ## Known Limitations
 
 - MediaPipe is markerless single-camera → depth (Z) is estimated, side-on angle minimizes this

@@ -29,6 +29,7 @@ Butt-cap-mounted IMU streaming stroke data over BLE. Target: <15g added mass, ~$
 - 6-axis (or 9-axis) IMU window @ 500Hz+
 - Impact timestamp (ms since boot — aligned to video via the 3-tap sync event)
 - Derived on-device or host-side: peak angular velocity → racket-head speed proxy, impact shock magnitude, swing plane orientation
+- **Spin-type classification (racket-sensor exclusive):** swing-path direction (low-to-high = topspin, high-to-low = slice, flat = level) + racket-face angle from gyro at impact → {topspin, slice, flat} label per stroke. The camera cannot see racket face; this is the IMU's unique contribution to the fused taxonomy (see PLAN.md)
 
 ## Integration with the pipeline
 
